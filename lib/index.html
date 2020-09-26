@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title><<APP_NAME>></title>
+    <link href="style.css" rel="stylesheet" type="text/css" />
+		<link rel="apple-touch-icon" sizes="180x180" href="/icons/apple-touch-icon.png">
+		<link rel="icon" type="image/png" sizes="32x32" href="/icons/favicon-32x32.png">
+		<link rel="icon" type="image/png" sizes="16x16" href="/icons/favicon-16x16.png">
+		<link rel="manifest" href="/manifest.json">
+		<meta name="description" content="Collaborative Homework Planner">
+		<meta name="theme-color" content="#2F3BA2" />
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<meta name="apple-mobile-web-app-title" content="<<APP_NAME>>">
+		<meta name="google-signin-client_id" content="<<GOOGLE_CLIENT_ID>>">
+		<!--[if IE]><script>document.write('IE is not supported. Get a new browser!!');</script><![endif]-->
+  </head>
+  <body>
+		<!-- <div id="newlink-modal"><div id="modalcontent">
+			hello
+		</div></div> -->
+		<div class="g-signin2" data-longtitle="true" data-onsuccess="go"></div>
+		<div id="load"><div class="loader">Loading...</div><br>Loading...</div>
+		<div id="v">
+		<div id="box">
+			<h1>Sign In / Sign Up</h1>
+			<p>Please use your student email address.</p>
+		</div>
+		<div id="app">
+		<header>
+			<a :href="schoolink"><img id="schoologo" :alt="schoolname" :src="schoologo"></a>
+			<div id="headspace"><span onclick="window.location = '/';" id="htitle"><<APP_NAME>></span></div>
+			<div id="user">
+				<span id="username">{{username}}</span>
+				<div id="useractions">
+					<a href="#" onclick="signOut();">Sign out</a>
+					<a href="/settings">Settings</a>
+				</div>
+			</div>
+			<img id="useravatar" :src="usericon">
+		</header>
+		<section id="assignment-list">
+			<div class="assignment-block newa">
+				<div class="wrap"><i class="fas fa-plus"></i></div>
+				<span class="atitle"><input type="text" placeholder="Add the title of a new assignment..."></span>
+				<span class="about"></span>
+				<div id="morenew">
+					<select>
+						<option disabled selected>Select class...</option>
+						<option>{{p1}}</option>
+						<option>{{p2}}</option>
+						<option>{{p3}}</option>
+						<option>{{p4}}</option>
+						<option>{{p5}}</option>
+						<option>{{p6}}</option>
+					</select><br>
+					<label>Due:</label><input type="date">
+					<textarea placeholder="Description..."></textarea>
+					<button id="newcancel">Cancel</button>
+					<button id="newsubmit">Submit</button>			
+				</div>
+			</div>
+			<div class="link">
+				<div class="links">
+				<div class="linkwrap linkk linkwrapc" :data-link="linklink.link" v-for="linklink in linklinks" :data-id="linklink.id">
+					<div :data-id="linklink.id" class="linka">&times;</div>
+					<i :class="'fas linkwrapc' + linklink.icon" :data-link="linklink.link"></i>
+					<span class="linkwrapc" :data-link="linklink.link">{{linklink.name}}</span>
+				</div>
+				<div class="linkwrap" onclick="newlink();">
+					<i class="fas fa-plus"></i>
+					<span>Add a link</span>
+				</div>
+			</div>
+			</div>
+			<div v-if="typeof(assignments)!==undefined" :data-checked="assignment.checked" v-for="assignment in assignments" v-bind:class="['assignment-block', assignment.d, assignment.close]" :id="assignment.id">
+				<div class="wrap"><input v-model="assignment.checked" type="checkbox"></div>
+				<div class="assignment-clickbox">
+				<span class="atitle">{{assignment.title}}</span>
+				<span class="about"><i class="fas fa-book-reader"></i> {{assignment.clas}}&nbsp;&nbsp;&nbsp;<i class="fas fa-clock"></i> {{assignment.due.replace('on ','').replace('in ','')}}&nbsp;&nbsp;&nbsp;<!-- <i class="fas fa-user"></i> {{assignment.user}} --></span>
+				</div>
+			</div>
+			<footer>
+				<br><hr>
+				<p>© {{currentyear}} <a href="https://colewilson.xyz">Cole Wilson</a> &middot; <a href="#" onclick="feedback()">Feedback/Requests/Bug Reports</a><br>Made with <a href="https://jekyllrb.com/">Jekyll</a>, <a href="https://netlify.com/">Netlify</a>, <a href="https://vuejs.org/">vue.js</a>, <a href="https://linode.com/">and Linode</a><br><a href="/legal">Privacy Policy/Terms of Service</a></p>
+			</footer>
+		</section>
+		<section id="assignment-big">
+			<button id="closebig">&times;</button>
+			<h1>{{chosentitle}}</h1>
+			<span class="about"><i class="fas fa-clock"></i> Due {{chosendue}}&nbsp;&nbsp;&nbsp;<i class="fas fa-book-reader"></i> {{chosenclass}}&nbsp;&nbsp;&nbsp;<i class="fas fa-user"></i> Submitted by {{chosenuser}} {{chosensub}}</span>
+			<p v-html="chosendesc">
+			</p>
+		</section>
+		</div>
+		</div>
+		<script>
+		if ('serviceWorker' in navigator) {
+		  window.addEventListener('load', () => {
+		    navigator.serviceWorker.register('/service-worker.js')
+		        .then((reg) => {
+		          console.log('Service worker registered.', reg);
+		        });
+		  });
+		}
+		</script>
+		<script src="/install.js"></script>
+		<script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+		<script src="load.js"></script>
+		<script src="https://apis.google.com/js/platform.js"></script>
+		<script src="<<VUE_SCRIPT_URL>>"></script>
+    <script src="script.js"></script>
+		<script src="<<FONTAWESOME_URL>>" crossorigin="anonymous"></script>
+  </body>
+</html>

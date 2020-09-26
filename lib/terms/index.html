@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+  <head>
+		<link rel="apple-touch-icon" sizes="180x180" href="/icons/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/icons/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/icons/favicon-16x16.png">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+		<meta name="google-signin-client_id" content="852583754661-p6qphdp6qijri8tk5fafm3e5auq4gn02.apps.googleusercontent.com">
+    <title>Settings - AssignmentLogger</title>
+  </head>
+  <body>
+		<style>
+			#v, section {display: none;}
+			#load {
+				position: fixed;
+				top: 0;
+				left: 0;
+				width: 100vw;
+				height: 100vh;
+				background: white;
+				z-index: 999999;
+				text-align: center;
+				padding-top: 20vh;
+			}
+			body {
+				background: whitesmoke;
+				text-align: center;
+				align-content: center;
+				margin: 0;
+				color: #666666;
+				overflow: hidden;
+				font-family: -apple-system, BlinkMacSystemFont, Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+			}
+			#box {
+				background: white;
+				border-radius: 5px;
+				margin-top: 30vh;
+				margin-left: calc( (100vw - 600px) / 2 );
+				padding: 10px;
+				width: 600px;
+			}
+			#s {
+				display: block;
+			}
+		</style>
+		<div id="box">
+			<h1>Terms of Service</h1>
+			<embed src="/legal"></embed>
+			<br>
+			<input id="asdf" type="checkbox"></input><span id="s">I agree to the above terms</span>
+			<br>
+			<button id="submit" onclick="go()">Ok!</button><br>
+			
+		</div>
+		<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+		<script src="https://apis.google.com/js/platform.js"></script>
+		<script src="script.js"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+		<script src="https://kit.fontawesome.com/1d50f37b8d.js" crossorigin="anonymous"></script>
+  </body>
+</html>

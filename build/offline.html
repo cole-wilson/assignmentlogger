@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+  <head>
+		<link rel="apple-touch-icon" sizes="180x180" href="/icons/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/icons/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/icons/favicon-16x16.png">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+		<meta name="google-signin-client_id" content="852583754661-p6qphdp6qijri8tk5fafm3e5auq4gn02.apps.googleusercontent.com">
+    <title>Offline - AssignmentLogger</title>
+  </head>
+  <body>
+		<div id="load"><div class="loader">Loading...</div><br>Loading...</div>
+		<style>
+			#v, section {display: none;}
+			#load {
+				position: fixed;
+				top: 0;
+				left: 0;
+				width: 100vw;
+				height: 100vh;
+				background: white;
+				z-index: 999999;
+				text-align: center;
+				padding-top: 20vh;
+			}
+			body {
+				background: whitesmoke;
+				text-align: center;
+				align-content: center;
+				margin: 0;
+				color: #666666;
+				overflow: hidden;
+				font-family: -apple-system, BlinkMacSystemFont, Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+			}
+			#box {
+				background: white;
+				border-radius: 5px;
+				margin-top: 30vh;
+				margin-left: calc( (100vw - 330px) / 2 );
+				padding: 10px;
+				width: 300px;
+			}
+			.loader {
+			  color: #000000;
+			  font-size: 90px;
+			  text-indent: -9999em;
+			  overflow: hidden;
+			  width: 90px;
+			  height: 90px;
+			  border-radius: 50%;
+			  margin: 72px auto;
+			  position: relative;
+			  -webkit-transform: translateZ(0);
+			  -ms-transform: translateZ(0);
+			  transform: translateZ(0);
+			  -webkit-animation: load6 1.7s infinite ease, round 1.7s infinite ease;
+			  animation: load6 1.7s infinite ease, round 1.7s infinite ease;
+			}
+			@-webkit-keyframes load6 {
+			  0% {
+			    box-shadow: 0 -0.83em 0 -0.4em, 0 -0.83em 0 -0.42em, 0 -0.83em 0 -0.44em, 0 -0.83em 0 -0.46em, 0 -0.83em 0 -0.477em;
+			  }
+			  5%,
+			  95% {
+			    box-shadow: 0 -0.83em 0 -0.4em, 0 -0.83em 0 -0.42em, 0 -0.83em 0 -0.44em, 0 -0.83em 0 -0.46em, 0 -0.83em 0 -0.477em;
+			  }
+			  10%,
+			  59% {
+			    box-shadow: 0 -0.83em 0 -0.4em, -0.087em -0.825em 0 -0.42em, -0.173em -0.812em 0 -0.44em, -0.256em -0.789em 0 -0.46em, -0.297em -0.775em 0 -0.477em;
+			  }
+			  20% {
+			    box-shadow: 0 -0.83em 0 -0.4em, -0.338em -0.758em 0 -0.42em, -0.555em -0.617em 0 -0.44em, -0.671em -0.488em 0 -0.46em, -0.749em -0.34em 0 -0.477em;
+			  }
+			  38% {
+			    box-shadow: 0 -0.83em 0 -0.4em, -0.377em -0.74em 0 -0.42em, -0.645em -0.522em 0 -0.44em, -0.775em -0.297em 0 -0.46em, -0.82em -0.09em 0 -0.477em;
+			  }
+			  100% {
+			    box-shadow: 0 -0.83em 0 -0.4em, 0 -0.83em 0 -0.42em, 0 -0.83em 0 -0.44em, 0 -0.83em 0 -0.46em, 0 -0.83em 0 -0.477em;
+			  }
+			}
+			@keyframes load6 {
+			  0% {
+			    box-shadow: 0 -0.83em 0 -0.4em, 0 -0.83em 0 -0.42em, 0 -0.83em 0 -0.44em, 0 -0.83em 0 -0.46em, 0 -0.83em 0 -0.477em;
+			  }
+			  5%,
+			  95% {
+			    box-shadow: 0 -0.83em 0 -0.4em, 0 -0.83em 0 -0.42em, 0 -0.83em 0 -0.44em, 0 -0.83em 0 -0.46em, 0 -0.83em 0 -0.477em;
+			  }
+			  10%,
+			  59% {
+			    box-shadow: 0 -0.83em 0 -0.4em, -0.087em -0.825em 0 -0.42em, -0.173em -0.812em 0 -0.44em, -0.256em -0.789em 0 -0.46em, -0.297em -0.775em 0 -0.477em;
+			  }
+			  20% {
+			    box-shadow: 0 -0.83em 0 -0.4em, -0.338em -0.758em 0 -0.42em, -0.555em -0.617em 0 -0.44em, -0.671em -0.488em 0 -0.46em, -0.749em -0.34em 0 -0.477em;
+			  }
+			  38% {
+			    box-shadow: 0 -0.83em 0 -0.4em, -0.377em -0.74em 0 -0.42em, -0.645em -0.522em 0 -0.44em, -0.775em -0.297em 0 -0.46em, -0.82em -0.09em 0 -0.477em;
+			  }
+			  100% {
+			    box-shadow: 0 -0.83em 0 -0.4em, 0 -0.83em 0 -0.42em, 0 -0.83em 0 -0.44em, 0 -0.83em 0 -0.46em, 0 -0.83em 0 -0.477em;
+			  }
+			}
+			@-webkit-keyframes round {
+			  0% {
+			    -webkit-transform: rotate(0deg);
+			    transform: rotate(0deg);
+			  }
+			  100% {
+			    -webkit-transform: rotate(360deg);
+			    transform: rotate(360deg);
+			  }
+			}
+			@keyframes round {
+			  0% {
+			    -webkit-transform: rotate(0deg);
+			    transform: rotate(0deg);
+			  }
+			  100% {
+			    -webkit-transform: rotate(360deg);
+			    transform: rotate(360deg);
+			  }
+			}
+		</style>
+		<div id="box">
+			<h1>Offline</h1>
+			<p>Sadly, you are offline. Come back when you are online!</p>
+		</div>
+		<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+		<script>window.onload=function(){$("#load").css("display","none");$("#v, #assignment-list").css("display","block");}</script>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  </body>
+</html>

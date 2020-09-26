@@ -1,0 +1,2 @@
+language = "bash"
+run = "python3 build.py;cd build;php -S 0.0.0.0:8080;"
