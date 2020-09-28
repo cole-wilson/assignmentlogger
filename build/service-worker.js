@@ -14,7 +14,7 @@
 
 // CODELAB: Update cache names each time the service worker or any of the
 // files change.
-const CACHE_NAME = 'static-cache-v1';
+const CACHE_NAME = 'cache-v1';
 
 // CODELAB: Add list of files to cache here.
 const FILES_TO_CACHE = [
@@ -26,7 +26,7 @@ self.addEventListener('install', (evt) => {
   // CODELAB: Precache static resources here.
 	evt.waitUntil(
     caches.open(CACHE_NAME).then((cache) => {
-      console.log('[ServiceWorker] Pre-caching offline page');
+      console.log('[ServiceWorker] Pre-caching page');
       return cache.addAll(FILES_TO_CACHE);
     })
 	);
@@ -49,20 +49,18 @@ self.addEventListener('activate', (evt) => {
   return self.clients.claim();
 });
 
-self.addEventListener('fetch', (evt) => {
-  console.log('[ServiceWorker] Fetch', evt.request.url);
-  // CODELAB: Add fetch event handler here.
-	if (evt.request.mode !== 'navigate') {
-	  // Not a page navigation, bail.
-	  return;
-	}
-	evt.respondWith(
-	    fetch(evt.request)
-	        .catch(() => {
-	          return caches.open(CACHE_NAME)
-	              .then((cache) => {
-	                return cache.match('offline.html');
-	              });
-	        })
-	);
+self.addEventListener('fetch', function(event) {
+if (evt.request.mode !== 'navigate') {
+  // Not a page navigation, bail.
+  return;
+}
+evt.respondWith(
+    fetch(evt.request)
+        .catch(() => {
+          return caches.open(CACHE_NAME)
+              .then((cache) => {
+                return cache.match('offline.html');
+              });
+        })
+);
 });

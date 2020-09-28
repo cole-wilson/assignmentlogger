@@ -65,7 +65,7 @@
 			<div class="link">
 				<div class="links">
 				<div class="linkwrap linkk linkwrapc" :data-link="linklink.link" v-for="linklink in linklinks" :data-id="linklink.id">
-					<div :data-id="linklink.id" class="linka">&times;</div>
+					<div :data-id="linklink.id" class="linka"><i class="fas fa-delete"></i></div>
 					<i :class="'fas linkwrapc' + linklink.icon" :data-link="linklink.link"></i>
 					<span class="linkwrapc" :data-link="linklink.link">{{linklink.name}}</span>
 				</div>

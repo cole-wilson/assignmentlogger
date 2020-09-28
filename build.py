@@ -8,7 +8,7 @@ os.system('cp -r lib/* build')
 os.chdir('build')
 for file in glob.glob("*.*"):
 	for x in re.findall('<<(.*?)>>',open(file).read()):
-		print(x)
+		# print(x)
 		if os.getenv(x) != None:
 			os.system("sed -i 's|<<"+re.escape(x)+">>|"+os.getenv(x)+"|g' "+file+"")
 		else:

@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width">
-    <title>AssignmentLogger</title>
+    <title>AssignmentLogger [dev]</title>
     <link href="style.css" rel="stylesheet" type="text/css" />
 		<link rel="apple-touch-icon" sizes="180x180" href="/icons/apple-touch-icon.png">
 		<link rel="icon" type="image/png" sizes="32x32" href="/icons/favicon-32x32.png">
@@ -13,7 +13,7 @@
 		<meta name="theme-color" content="#2F3BA2" />
 		<meta name="apple-mobile-web-app-capable" content="yes">
 		<meta name="apple-mobile-web-app-status-bar-style" content="black">
-		<meta name="apple-mobile-web-app-title" content="AssignmentLogger">
+		<meta name="apple-mobile-web-app-title" content="AssignmentLogger [dev]">
 		<meta name="google-signin-client_id" content="852583754661-p6qphdp6qijri8tk5fafm3e5auq4gn02.apps.googleusercontent.com">
 		<!--[if IE]><script>document.write('IE is not supported. Get a new browser!!');</script><![endif]-->
   </head>
@@ -31,7 +31,7 @@
 		<div id="app">
 		<header>
 			<a :href="schoolink"><img id="schoologo" :alt="schoolname" :src="schoologo"></a>
-			<div id="headspace"><span onclick="window.location = '/';" id="htitle">AssignmentLogger</span></div>
+			<div id="headspace"><span onclick="window.location = '/';" id="htitle">AssignmentLogger [dev]</span></div>
 			<div id="user">
 				<span id="username">{{username}}</span>
 				<div id="useractions">
@@ -65,7 +65,7 @@
 			<div class="link">
 				<div class="links">
 				<div class="linkwrap linkk linkwrapc" :data-link="linklink.link" v-for="linklink in linklinks" :data-id="linklink.id">
-					<div :data-id="linklink.id" class="linka">&times;</div>
+					<div :data-id="linklink.id" class="linka"><i class="fas fa-delete"></i></div>
 					<i :class="'fas linkwrapc' + linklink.icon" :data-link="linklink.link"></i>
 					<span class="linkwrapc" :data-link="linklink.link">{{linklink.name}}</span>
 				</div>
