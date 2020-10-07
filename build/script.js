@@ -17,7 +17,7 @@ var assignments = {};
 
 
 dones = localStorage.getItem("dones");
-$.get('aback.cwi.repl.co/users?mode=doneslist&id='+userdata.id,function(data,status){
+$.get('https://api.assignmentlogger.com/users?mode=doneslist&id='+userdata.id,function(data,status){
 	if (data != dones) {
 		localStorage.setItem("dones",data);
 	}
@@ -27,7 +27,7 @@ $.get('aback.cwi.repl.co/users?mode=doneslist&id='+userdata.id,function(data,sta
 
 setInterval(function(){
 	dones = localStorage.getItem("dones");
-	$.get('aback.cwi.repl.co/users?mode=doneslist&id='+userdata.id,function(data,status){
+	$.get('https://api.assignmentlogger.com/users?mode=doneslist&id='+userdata.id,function(data,status){
 		if (data != dones) {
 			localStorage.setItem("dones",data);
 		}
@@ -40,7 +40,7 @@ setInterval(function(){updatelinks();},600000);
 setInterval(function(){ listAssignments(); console.log('Updated assignments.'); }, 120000);
 
 function listAssignments() {
-	$.get("aback.cwi.repl.co/assignments?mode=list&school="+userdata.school+"&p1="+userdata.p1+"&p2="+userdata.p2+"&p3="+userdata.p3+"&p4="+userdata.p4+"&p5="+userdata.p5+"&p6="+userdata.p6, function(data, status){
+	$.get("https://api.assignmentlogger.com/assignments?mode=list&school="+userdata.school+"&p1="+userdata.p1+"&p2="+userdata.p2+"&p3="+userdata.p3+"&p4="+userdata.p4+"&p5="+userdata.p5+"&p6="+userdata.p6, function(data, status){
 		var list = {};
 		for (var key in data) {
 			var checked = false;
@@ -90,7 +90,7 @@ function bigAssignment(i) {
 }
 
 // Fetch first data
-$.get("aback.cwi.repl.co/schools?mode=info&school="+userdata.school, function(data, status){
+$.get("https://api.assignmentlogger.com/schools?mode=info&school="+userdata.school, function(data, status){
 	if (userdata.school !== undefined) {
 	var metaThemeColor = document.querySelector("meta[name=theme-color]");
   metaThemeColor.setAttribute("content", data.colors[0]);
@@ -150,7 +150,7 @@ $(document).on("click",".assignment-block input[type=checkbox]",function(){
 		dones = localStorage.getItem('dones');
 		$(this).parent().parent().addClass('done');
 	}
-	$.get("aback.cwi.repl.co/users?mode=donesnew&id="+userdata.id+"&dones="+localStorage.getItem('dones'))
+	$.get("https://api.assignmentlogger.com/users?mode=donesnew&id="+userdata.id+"&dones="+localStorage.getItem('dones'))
 });
 
 $(document).on("click",".newa input",function(){
@@ -201,7 +201,7 @@ $("#newcancel").click(function(){
 
 $("#newsubmit").click(function(){
 	if (($("#morenew select").val()!="Select class..." && $("#morenew select").val()!="") && $(".newa input[type=text]").val()!="" && $("#morenew input[type=date]").val()!="") {
-		$.post("aback.cwi.repl.co/assignments?mode=new&school="+userdata.school+"&class="+encodeURI($("#morenew select").val())+"&title="+encodeURIComponent($(".newa input[type=text]").val())+"&date="+encodeURI($("#morenew input[type=date]").val())+"&desc="+encodeURI($("#morenew textarea").val().replace(/\n/g,'<br>')),
+		$.post("https://api.assignmentlogger.com/assignments?mode=new&school="+userdata.school+"&class="+encodeURI($("#morenew select").val())+"&title="+encodeURIComponent($(".newa input[type=text]").val())+"&date="+encodeURI($("#morenew input[type=date]").val())+"&desc="+encodeURI($("#morenew textarea").val().replace(/\n/g,'<br>')),
 		{
   	  name: userdata.name,
   	  city: "Duckburg"
@@ -245,10 +245,10 @@ function go(googleUser) {
   user.name = profile.getName();
   user.icon = profile.getImageUrl();
   user.email = profile.getEmail();
-	$.get("aback.cwi.repl.co/users?mode=info&id="+profile.getId(), function(data, status){
+	$.get("https://api.assignmentlogger.com/users?mode=info&id="+profile.getId(), function(data, status){
 		if (data.school == null) {
 			localStorage.setItem('user',JSON.stringify(user));
-			window.location = "/terms";
+			window.location = "/settings";
 		}
 		else {
 			user.school = data.school;
