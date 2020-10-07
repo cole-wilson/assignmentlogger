@@ -181,7 +181,7 @@ footer p {
 	cursor: crosshair;
 	z-index: 999999999999;
 	position: relative;
-	transform: translate(-37px,-9px);
+	transform: translate(100px,100px);
 	background: red;
 	opacity: 0;
 	transition: opacity 0.5s;
