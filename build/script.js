@@ -7,7 +7,6 @@ if (localStorage.getItem("user") == null || localStorage.getItem("signed-in") !=
 if (localStorage.getItem("dones") == null) {localStorage.setItem("dones","");}
 if (localStorage.getItem("links") == null) {localStorage.setItem("links","");}
 
-
 var dones = localStorage.getItem("dones");
 var userdata = {};
 if (JSON.parse(localStorage.getItem("user")) != null) {
@@ -201,7 +200,7 @@ $("#newcancel").click(function(){
 
 $("#newsubmit").click(function(){
 	if (($("#morenew select").val()!="Select class..." && $("#morenew select").val()!="") && $(".newa input[type=text]").val()!="" && $("#morenew input[type=date]").val()!="") {
-		$.post("https://api.assignmentlogger.com/assignments?mode=new&school="+userdata.school+"&class="+encodeURI($("#morenew select").val())+"&title="+encodeURIComponent($(".newa input[type=text]").val())+"&date="+encodeURI($("#morenew input[type=date]").val())+"&desc="+encodeURI($("#morenew textarea").val().replace(/\n/g,'<br>')),
+		$.post("https://api.assignmentlogger.com/assignments?mode=new&school="+userdata.school+"&class="+encodeURI($("#morenew select").val())+"&name="+encodeURI(userdata.name)+"&title="+encodeURIComponent($(".newa input[type=text]").val())+"&date="+encodeURI($("#morenew input[type=date]").val())+"&desc="+encodeURI($("#morenew textarea").val().replace(/\n/g,'<br>')),
 		{
   	  name: userdata.name,
   	  city: "Duckburg"
@@ -286,6 +285,6 @@ function updatelinks(){
 }updatelinks();
 
 function newlink() {
-	localStorage.setItem('links',localStorage.getItem('links')+prompt('Name:')+":::"+prompt('Link:')+":::"+prompt('Icon:\n(font-awesome)')+";");
+	localStorage.setItem('links',localStorage.getItem('links')+prompt('Name:')+":::"+prompt('Link:')+":::"+"fas fa-zoom"+";");
 	updatelinks();
 }
