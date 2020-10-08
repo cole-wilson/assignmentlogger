@@ -65,7 +65,7 @@
 			<div class="link">
 				<div class="links">
 				<div class="linkwrap linkk linkwrapc" :data-link="linklink.link" v-for="linklink in linklinks" :data-id="linklink.id">
-					<div :data-id="linklink.id" class="linka"><i class="fas fa-delete"></i></div>
+					<div :data-id="linklink.id" class="linka">&times;</div>
 					<i :class="'fas linkwrapc' + linklink.icon" :data-link="linklink.link"></i>
 					<span class="linkwrapc" :data-link="linklink.link">{{linklink.name}}</span>
 				</div>
@@ -84,7 +84,9 @@
 			</div>
 			<footer>
 				<br><hr>
-				<p>© {{currentyear}} <a href="https://colewilson.xyz">Cole Wilson</a></p>
+				<p>© {{currentyear}} <a href="https://colewilson.xyz">Cole Wilson</a><br>
+				AssignmentLogger Logo by Micah B.
+				</p>
 			</footer>
 		</section>
 		<section id="assignment-big">

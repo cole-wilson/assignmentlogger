@@ -181,13 +181,13 @@ footer p {
 	cursor: crosshair;
 	z-index: 999999999999;
 	position: relative;
-	transform: translate(-37px,-9px);
+	transform: translate(0px,0px);
 	background: red;
 	opacity: 0;
 	transition: opacity 0.5s;
 	width: 12px;
 	font-size: 10px;
-	color: white;
+	color: darkgray;
 	border-radius: 10px;
 	height: 13px;
 	display: inline-block;
