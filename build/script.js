@@ -152,7 +152,7 @@ $(document).on("click",".assignment-block input[type=checkbox]",function(){
 	$.get("https://api.assignmentlogger.com/users?mode=donesnew&id="+userdata.id+"&dones="+localStorage.getItem('dones'))
 });
 
-$(document).on("click",".newa input",function(){
+$(document).on("click",".newa input, .newa i",function(){
 	$(this).parent().parent().addClass('bn');
 	$("#morenew").css('display','block');
 });

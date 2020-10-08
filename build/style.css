@@ -242,6 +242,9 @@ footer p {
 	font-size: 15px;
 	/* font-weight: bold; */
 }
+.newa i {
+	cursor: pointer;
+}
 #morenew {
 	display: none;
 	transform: translateY(-40px);
