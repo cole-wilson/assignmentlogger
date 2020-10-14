@@ -4,7 +4,7 @@ if os.path.isdir('build'):
 	os.system('rm -rf build')
 
 os.system('mkdir build')
-os.system('cp -r lib/* build')
+os.system('cp -r src/* build')
 os.chdir('build')
 for file in glob.glob("*.*"):
 	for x in re.findall('<<(.*?)>>',open(file).read()):
