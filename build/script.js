@@ -6,6 +6,8 @@ if (location.protocol !== 'https:') {
 if (localStorage.getItem("user") == null || localStorage.getItem("signed-in") != "true") {$('body').addClass('sign');}
 if (localStorage.getItem("dones") == null) {localStorage.setItem("dones","");}
 if (localStorage.getItem("links") == null) {localStorage.setItem("links","");}
+if (localStorage.getItem("alertclicks") == null) {localStorage.setItem("alertclicks","");}
+
 
 var dones = localStorage.getItem("dones");
 var userdata = {};
@@ -14,6 +16,15 @@ userdata = JSON.parse(localStorage.getItem("user"));
 }
 var assignments = {};
 
+var alerts = [{name:"a"}];
+for (var a in alerts) {
+	if (localStorage.getItem('alertclicks').includes(a[name]+';')) {
+		alert(a[name]);
+	}
+	else{
+		$("#v").append(`<div class="alert"><button onclick="localStorage.setItem('alertclicks',localStorage.getItem('alertclicks')+'${a.name}'+';');$(this).parent().remove();">&times;</button><br><h4>Share!</h4><p>Please share this site with your friends!</p></div>`)
+	}
+}
 
 dones = localStorage.getItem("dones");
 $.get('https://api.assignmentlogger.com/users?mode=doneslist&id='+userdata.id,function(data,status){
@@ -157,7 +168,7 @@ $(document).on("click",".newa input, .newa i",function(){
 	$("#morenew").css('display','block');
 });
 
-$(document).on("click",".linkwrapc :not(.linka)",function(){
+$(document).on("click",".linkwrapc",function(){
 	win = window.open($(this).attr('data-link'), "MsgWindow", "top=0,left=0,width=1,height=1");
 	setTimeout(function () { win.close();}, 2000);
 });
@@ -200,7 +211,7 @@ $("#newcancel").click(function(){
 
 $("#newsubmit").click(function(){
 	if (($("#morenew select").val()!="Select class..." && $("#morenew select").val()!="") && $(".newa input[type=text]").val()!="" && $("#morenew input[type=date]").val()!="") {
-		$.post("https://api.assignmentlogger.com/assignments?mode=new&school="+userdata.school+"&class="+encodeURI($("#morenew select").val())+"&name="+encodeURI(userdata.name)+"&title="+encodeURIComponent($(".newa input[type=text]").val())+"&date="+encodeURI($("#morenew input[type=date]").val())+"&desc="+encodeURI($("#morenew textarea").val().replace(/\n/g,'<br>')),
+		$.post("https://api.assignmentlogger.com/assignments?mode=new&school="+userdata.school+"&class="+encodeURI($("#morenew select").val())+"&name="+encodeURI(userdata.name)+"&title="+encodeURIComponent($(".newa input[type=text]").val())+"&date="+encodeURI($("#morenew input[type=date]").val())+"&desc="+encodeURIComponent($("#morenew textarea").val().replace(/\n/g,'<br>')),
 		{
   	  name: userdata.name,
   	  city: "Duckburg"
