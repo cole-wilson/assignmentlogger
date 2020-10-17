@@ -18,7 +18,19 @@ window.addEventListener('beforeinstallprompt', (e) => {
     deferredPrompt.userChoice.then((choiceResult) => {
         if (choiceResult.outcome === 'accepted') {
           console.log('User accepted the A2HS prompt');
+					ga('send', {
+  hitType: 'event',
+  eventCategory: 'Home Screen',
+  eventAction: 'prompt',
+  eventLabel: 'accept'
+});
         } else {
+					ga('send', {
+  hitType: 'event',
+  eventCategory: 'Home Screen',
+  eventAction: 'prompt',
+  eventLabel: 'dismiss'
+});
           console.log('User dismissed the A2HS prompt');
         }
         deferredPrompt = null;
