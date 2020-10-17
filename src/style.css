@@ -1,10 +1,22 @@
 @import url(https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css);
 /* MAIN */
-#a2hs {
+#a2hsp {
 	position: fixed;
-	display: none;
-	left: 48vw;
+	z-index: 9999999999999999999999999999;
+	left: 90vw;
+	top: 65px;
+	width: 200px;
+	height: 50px;
 	transform: translateY(-15px);
+}
+#a2hs {
+	cursor: pointer;
+	display: none;
+	border: 2px solid red;
+	border-top: 1px solid #1a76a8;
+	border-radius: 0px 0px 5px 5px;
+	transform: scale(1);
+	animation: pulse 1s 5;
 }
 body {
 	margin: 0px;
@@ -321,6 +333,9 @@ footer p {
 
 /* MOBILE */
 @media only screen and (max-width: 768px) {
+	#a2hs {
+		display: none;
+	}
 	#closebig {
 		display: block;
 	}
@@ -482,4 +497,18 @@ body.sign .g-signin2 {
 body .g-signin2 {
 	display: none;
 	margin-left: calc( (100% - 180px) / 2 );
+}
+
+@keyframes pulse {
+	0% {
+		box-shadow: 0 0 0 0 rgba(0, 0, 0, 0.7);
+	}
+
+	70% {
+		box-shadow: 0 0 0 10px rgba(0, 0, 0, 0);
+	}
+
+	100% {
+		box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
+	}
 }
