@@ -15,7 +15,7 @@
 	border: 2px solid red;
 	border-top: 1px solid #1a76a8;
 	border-radius: 0px 0px 5px 5px;
-	transform: scale(1.5);
+	transform: scale(1);
 	animation: pulse 1s 5;
 }
 body {
@@ -333,9 +333,7 @@ footer p {
 
 /* MOBILE */
 @media only screen and (max-width: 768px) {
-	#a2hs {
-		display: none;
-	}
+
 	#closebig {
 		display: block;
 	}

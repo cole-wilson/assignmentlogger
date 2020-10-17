@@ -333,9 +333,7 @@ footer p {
 
 /* MOBILE */
 @media only screen and (max-width: 768px) {
-	#a2hs {
-		display: none;
-	}
+
 	#closebig {
 		display: block;
 	}
