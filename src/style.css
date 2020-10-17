@@ -1,5 +1,11 @@
 @import url(https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css);
 /* MAIN */
+#a2hs {
+	position: fixed;
+	display: none;
+	left: 48vw;
+	transform: translateY(-15px);
+}
 body {
 	margin: 0px;
 	overflow: hidden;
@@ -9,13 +15,18 @@ body {
 	background: yellow;
   text-decoration: line-under;
 }
+#a2hsprompt {
+	display: none;
+}
 .alert {
 	text-align: center;
 	position: fixed;
 	top: 0px;
 	width: 100vw;
-	background: whitesmoke;
+	color: white;
+	background: #1a76a8;
 	z-index: 999999999999999;
+	border-bottom: 3px solid red;
 	min-height: 50px;
 }
 canvas {

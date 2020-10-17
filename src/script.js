@@ -16,16 +16,16 @@ userdata = JSON.parse(localStorage.getItem("user"));
 }
 var assignments = {};
 
-var alerts = [{name:"a"}];
-for (var a in alerts) {
-	if (localStorage.getItem('alertclicks').includes(a[name]+';')) {
-		// alert(a[name]);
-		console.log('a');
-	}
-	else{
-		$("#v").append(`<div class="alert"><button onclick="localStorage.setItem('alertclicks',localStorage.getItem('alertclicks')+'${a.name}'+';');$(this).parent().remove();">&times;</button><br><h4>Share!</h4><p>Please share this site with your friends!</p></div>`)
-	}
-}
+// var alerts = [{name:"a"}];
+// for (var a in alerts) {
+// 	if (localStorage.getItem('alertclicks').includes(a[name]+';')) {
+// 		// alert(a[name]);
+// 		console.log('a');
+// 	}
+// 	else{
+// 		$("#v").append(`<div class="alert"><button onclick="localStorage.setItem('alertclicks',localStorage.getItem('alertclicks')+'${a.name}'+';');$(this).parent().remove();">&times;</button><br><h4>Share!</h4><p>Please share this site with your friends!</p></div>`)
+// 	}
+// }
 
 dones = localStorage.getItem("dones");
 $.get('<<SERVER_DOMAIN>>/users?mode=doneslist&id='+userdata.id,function(data,status){
