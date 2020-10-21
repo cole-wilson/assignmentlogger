@@ -51,6 +51,10 @@ window.onload = function() {
 	}
 }
 $("#submit").click(function(){
+	if ($("#schoolselect").val() == "nope") {
+		alert('Select your school please');
+		return;
+	}
 	var user = JSON.parse(localStorage.getItem("user"));
 	user.school = $("#schoolselect").val();
 	user.p1 = $("#p1").val();
