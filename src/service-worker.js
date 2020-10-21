@@ -14,7 +14,7 @@
 
 // CODELAB: Update cache names each time the service worker or any of the
 // files change.
-const CACHE_NAME = 'cache-v2';
+const CACHE_NAME = 'cache-v3';
 
 // CODELAB: Add list of files to cache here.
 const FILES_TO_CACHE = [

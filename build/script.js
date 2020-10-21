@@ -51,7 +51,14 @@ setInterval(function(){updatelinks();},600000);
 setInterval(function(){ listAssignments(); console.log('Updated assignments.'); }, 120000);
 
 function listAssignments() {
-	$.get("https://api.assignmentlogger.com/assignments?mode=list&school="+userdata.school+"&schoology="+encodeURIComponent(userdata.schoology)+"&p1="+userdata.p1+"&p2="+userdata.p2+"&p3="+userdata.p3+"&p4="+userdata.p4+"&p5="+userdata.p5+"&p6="+userdata.p6, function(data, status){
+	if (typeof userdata.schoology !== 'undefined') {
+	var schoo = "https://"+userdata.schoology;
+	}
+	else {
+		var schoo = "";
+	}
+	// prompt("https://api.assignmentlogger.com/assignments?mode=list&school="+userdata.school+"&schoology="+encodeURIComponent(schoo)+"&p1="+userdata.p1+"&p2="+userdata.p2+"&p3="+userdata.p3+"&p4="+userdata.p4+"&p5="+userdata.p5+"&p6="+userdata.p6);
+	$.get("https://api.assignmentlogger.com/assignments?mode=list&school="+userdata.school+"&schoology="+encodeURIComponent(schoo)+"&p1="+userdata.p1+"&p2="+userdata.p2+"&p3="+userdata.p3+"&p4="+userdata.p4+"&p5="+userdata.p5+"&p6="+userdata.p6, function(data, status){
 		var list = {};
 		for (var key in data) {
 			var checked = false;
@@ -70,6 +77,7 @@ function listAssignments() {
 				checked: checked,
 				desc: data[key].description,
 				d: d,
+
 				close: ( data[key].due.includes('hours') || data[key].due.includes('minutes') || data[key].due.includes('seconds') ) ? ((data[key].due.includes('minutes') || data[key].due.includes('seconds')) ? "veryclose" : "close"): ""
 			}
 		}

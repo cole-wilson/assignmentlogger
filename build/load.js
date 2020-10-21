@@ -1,3 +1,8 @@
+// window.onerror = function(msg, url, linenumber) {
+//   alert('Error message: '+msg+'\nURL: '+url+'\nLine Number: '+linenumber);
+//   return true;
+// }
+
 // Start Load Code
 var loaded = 0;
 var count = 0;

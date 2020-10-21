@@ -28,7 +28,7 @@ var assignments = {};
 // }
 
 dones = localStorage.getItem("dones");
-$.get('<<SERVER_DOMAIN>>/users?mode=doneslist&id='+userdata.id,function(data,status){
+$.get('https://api.assignmentlogger.com/users?mode=doneslist&id='+userdata.id,function(data,status){
 	if (data != dones) {
 		localStorage.setItem("dones",data);
 	}
@@ -38,7 +38,7 @@ $.get('<<SERVER_DOMAIN>>/users?mode=doneslist&id='+userdata.id,function(data,sta
 
 setInterval(function(){
 	dones = localStorage.getItem("dones");
-	$.get('<<SERVER_DOMAIN>>/users?mode=doneslist&id='+userdata.id,function(data,status){
+	$.get('https://api.assignmentlogger.com/users?mode=doneslist&id='+userdata.id,function(data,status){
 		if (data != dones) {
 			localStorage.setItem("dones",data);
 		}
@@ -51,7 +51,14 @@ setInterval(function(){updatelinks();},600000);
 setInterval(function(){ listAssignments(); console.log('Updated assignments.'); }, 120000);
 
 function listAssignments() {
-	$.get("<<SERVER_DOMAIN>>/assignments?mode=list&school="+userdata.school+"&schoology="+encodeURIComponent(userdata.schoology)+"&p1="+userdata.p1+"&p2="+userdata.p2+"&p3="+userdata.p3+"&p4="+userdata.p4+"&p5="+userdata.p5+"&p6="+userdata.p6, function(data, status){
+	if (typeof userdata.schoology !== 'undefined') {
+	var schoo = "https://"+userdata.schoology;
+	}
+	else {
+		var schoo = "";
+	}
+	// prompt("https://api.assignmentlogger.com/assignments?mode=list&school="+userdata.school+"&schoology="+encodeURIComponent(schoo)+"&p1="+userdata.p1+"&p2="+userdata.p2+"&p3="+userdata.p3+"&p4="+userdata.p4+"&p5="+userdata.p5+"&p6="+userdata.p6);
+	$.get("https://api.assignmentlogger.com/assignments?mode=list&school="+userdata.school+"&schoology="+encodeURIComponent(schoo)+"&p1="+userdata.p1+"&p2="+userdata.p2+"&p3="+userdata.p3+"&p4="+userdata.p4+"&p5="+userdata.p5+"&p6="+userdata.p6, function(data, status){
 		var list = {};
 		for (var key in data) {
 			var checked = false;
@@ -70,6 +77,7 @@ function listAssignments() {
 				checked: checked,
 				desc: data[key].description,
 				d: d,
+
 				close: ( data[key].due.includes('hours') || data[key].due.includes('minutes') || data[key].due.includes('seconds') ) ? ((data[key].due.includes('minutes') || data[key].due.includes('seconds')) ? "veryclose" : "close"): ""
 			}
 		}
@@ -101,7 +109,7 @@ function bigAssignment(i) {
 }
 
 // Fetch first data
-$.get("<<SERVER_DOMAIN>>/schools?mode=info&school="+userdata.school, function(data, status){
+$.get("https://api.assignmentlogger.com/schools?mode=info&school="+userdata.school, function(data, status){
 	if (userdata.school !== undefined) {
 	var metaThemeColor = document.querySelector("meta[name=theme-color]");
   metaThemeColor.setAttribute("content", data.colors[0]);
@@ -161,7 +169,7 @@ $(document).on("click",".assignment-block input[type=checkbox]",function(){
 		dones = localStorage.getItem('dones');
 		$(this).parent().parent().addClass('done');
 	}
-	$.get("<<SERVER_DOMAIN>>/users?mode=donesnew&id="+userdata.id+"&dones="+localStorage.getItem('dones'))
+	$.get("https://api.assignmentlogger.com/users?mode=donesnew&id="+userdata.id+"&dones="+localStorage.getItem('dones'))
 });
 
 $(document).on("click",".newa input, .newa i",function(){
@@ -212,7 +220,7 @@ $("#newcancel").click(function(){
 
 $("#newsubmit").click(function(){
 	if (($("#morenew select").val()!="Select class..." && $("#morenew select").val()!="") && $(".newa input[type=text]").val()!="" && $("#morenew input[type=date]").val()!="") {
-		$.post("<<SERVER_DOMAIN>>/assignments?mode=new&school="+userdata.school+"&class="+encodeURI($("#morenew select").val())+"&name="+encodeURI(userdata.name)+"&title="+encodeURIComponent($(".newa input[type=text]").val())+"&date="+encodeURI($("#morenew input[type=date]").val())+"&desc="+encodeURIComponent($("#morenew textarea").val().replace(/\n/g,'<br>')),
+		$.post("https://api.assignmentlogger.com/assignments?mode=new&school="+userdata.school+"&class="+encodeURI($("#morenew select").val())+"&name="+encodeURI(userdata.name)+"&title="+encodeURIComponent($(".newa input[type=text]").val())+"&date="+encodeURI($("#morenew input[type=date]").val())+"&desc="+encodeURIComponent($("#morenew textarea").val().replace(/\n/g,'<br>')),
 		{
   	  name: userdata.name,
   	  city: "Duckburg"
@@ -256,7 +264,7 @@ function go(googleUser) {
   user.name = profile.getName();
   user.icon = profile.getImageUrl();
   user.email = profile.getEmail();
-	$.get("<<SERVER_DOMAIN>>/users?mode=info&id="+profile.getId(), function(data, status){
+	$.get("https://api.assignmentlogger.com/users?mode=info&id="+profile.getId(), function(data, status){
 		if (data.school == null) {
 			localStorage.setItem('user',JSON.stringify(user));
 			window.location = "/settings";
