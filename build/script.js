@@ -51,7 +51,7 @@ setInterval(function(){updatelinks();},600000);
 setInterval(function(){ listAssignments(); console.log('Updated assignments.'); }, 120000);
 
 function listAssignments() {
-	$.get("https://api.assignmentlogger.com/assignments?mode=list&school="+userdata.school+"&p1="+userdata.p1+"&p2="+userdata.p2+"&p3="+userdata.p3+"&p4="+userdata.p4+"&p5="+userdata.p5+"&p6="+userdata.p6, function(data, status){
+	$.get("https://api.assignmentlogger.com/assignments?mode=list&school="+userdata.school+"&schoology="+encodeURIComponent(userdata.schoology)+"&p1="+userdata.p1+"&p2="+userdata.p2+"&p3="+userdata.p3+"&p4="+userdata.p4+"&p5="+userdata.p5+"&p6="+userdata.p6, function(data, status){
 		var list = {};
 		for (var key in data) {
 			var checked = false;
