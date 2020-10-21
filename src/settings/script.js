@@ -38,6 +38,30 @@ $.get("https://api.assignmentlogger.com/schools?mode=list",function(data,status)
 	}
 });
 
+setTimeout(function(){
+	var user = JSON.parse(localStorage.getItem("user"));
+	if (typeof user.school !== undefined) {
+	$("#schoolselect").val(user.school);
+	$.get("https://api.assignmentlogger.com/schools?mode=classes&school="+$("#schoolselect").val(),function(data,status){
+		v.classes = data;
+		setTimeout(function(){
+			$("#p1").val(user.p1);
+			$("#p2").val(user.p2);
+			$("#p3").val(user.p3);
+			$("#p4").val(user.p4);
+			$("#p5").val(user.p5);
+			$("#p6").val(user.p6);
+		}, 200);
+	});
+	}
+}, 700);
+setTimeout(function(){
+	var user = JSON.parse(localStorage.getItem("user"));
+	if (typeof user.schoology !== undefined) {
+	$("#schoology").val(user.schoology);
+	}
+}, 700);
+
 $("#schoolselect").change(function(){
 	$.get("https://api.assignmentlogger.com/schools?mode=classes&school="+$(this).val(),function(data,status){
 		v.classes = data;
