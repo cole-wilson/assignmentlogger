@@ -59,8 +59,10 @@ $("#submit").click(function(){
 	user.p4 = $("#p4").val();
 	user.p5 = $("#p5").val();
 	user.p6 = $("#p6").val();
+	user.schoology = $("#schoology").val();
+	
 	localStorage.setItem('user',JSON.stringify(user));
-	$.get("https://api.assignmentlogger.com/users?mode=new&id="+user.id+"&school="+$("#schoolselect").val()+"&p1="+encodeURI($("#p1").val())+"&p2="+encodeURI($("#p2").val())+"&p3="+encodeURI($("#p3").val())+"&p4="+encodeURI($("#p4").val())+"&p5="+encodeURI($("#p5").val())+"&p6="+encodeURI($("#p6").val()),function(data,status){
+	$.get("https://api.assignmentlogger.com/users?mode=new&id="+user.id+"&school="+$("#schoolselect").val()+"&schoology="+encodeURIComponent($("#schoology").val())+"&p1="+encodeURI($("#p1").val())+"&p2="+encodeURI($("#p2").val())+"&p3="+encodeURI($("#p3").val())+"&p4="+encodeURI($("#p4").val())+"&p5="+encodeURI($("#p5").val())+"&p6="+encodeURI($("#p6").val()),function(data,status){
 		window.location = "/";
 	})
 });
