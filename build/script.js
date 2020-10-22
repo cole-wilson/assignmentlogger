@@ -52,7 +52,7 @@ setInterval(function(){ listAssignments(); console.log('Updated assignments.'); 
 
 function listAssignments() {
 	if (typeof userdata.schoology !== 'undefined') {
-	var schoo = "https://"+userdata.schoology;
+	var schoo = userdata.schoology;
 	}
 	else {
 		var schoo = "";
