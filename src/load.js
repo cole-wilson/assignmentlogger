@@ -1,4 +1,4 @@
-version = "aab";
+version = "2.1";
 vnot = version != localStorage.getItem('version');
 if (vnot) {
 	$("#loadtext").text("UPDATING TO version "+version+"!");
