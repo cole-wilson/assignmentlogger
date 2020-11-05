@@ -1,3 +1,5 @@
+version = "aab";
+
 // window.onerror = function(msg, url, linenumber) {
 //   alert('Error message: '+msg+'\nURL: '+url+'\nLine Number: '+linenumber);
 //   return true;
@@ -34,6 +36,23 @@ function check() {
 });
 		$("#load").css("display","none");
 		$("body, #assignment-list, #v").css("display","block");
+		if (version != localStorage.getItem('version')) {
+			// localStorage.setItem('version',version);
+			$.get("https://api.github.com/repos/cole-wilson/assignmentlogger/commits/master",function(data,status){
+				Toastify({
+					text: "Version " + version + " just came out! (view details)",
+					duration: 6000, 
+					destination: data["html_url"],
+					newWindow: true,
+					close: true,
+					gravity: "bottom", // `top` or `bottom`
+					position: 'right', // `left`, `center` or `right`
+					backgroundColor: "gray",
+					stopOnFocus: true, // Prevents dismissing of toast on hover
+					onClick: function(){} // Callback after click
+				}).showToast();
+			});
+		}
 		return;
 	}
 }check();
