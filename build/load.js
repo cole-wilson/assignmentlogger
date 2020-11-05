@@ -1,5 +1,8 @@
 version = "aab";
-
+vnot = version != localStorage.getItem('version');
+if (vnot) {
+	$("#loadtext").text("UPDATING TO version "+version+"!");
+}
 // window.onerror = function(msg, url, linenumber) {
 //   alert('Error message: '+msg+'\nURL: '+url+'\nLine Number: '+linenumber);
 //   return true;
@@ -36,13 +39,13 @@ function check() {
 });
 		$("#load").css("display","none");
 		$("body, #assignment-list, #v").css("display","block");
-		if (version != localStorage.getItem('version')) {
+		if (vnot) {
 			// localStorage.setItem('version',version);
-			$.get("https://api.github.com/repos/cole-wilson/assignmentlogger/commits/master",function(data,status){
+			$.get("https://api.github.com/repos/cole-wilson/assignmentlogger/pulls?state=all",function(data,status){
 				Toastify({
 					text: "Version " + version + " just came out! (view details)",
 					duration: 6000, 
-					destination: data["html_url"],
+					destination: data[0]["html_url"],
 					newWindow: true,
 					close: true,
 					gravity: "bottom", // `top` or `bottom`
