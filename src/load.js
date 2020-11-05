@@ -1,4 +1,4 @@
-version = "2.1";
+version = "2.";
 vnot = version != localStorage.getItem('version');
 if (vnot) {
 	$("#loadtext").text("UPDATING TO version "+version+"!");
@@ -42,10 +42,11 @@ function check() {
 		if (vnot) {
 			localStorage.setItem('version',version);
 			$.get("https://api.github.com/repos/cole-wilson/assignmentlogger/commits",function(data,status){
+
 				Toastify({
 					text: "Version " + version + " just came out! (view details)",
 					duration: 6000, 
-					destination: data["html_url"],
+					destination: data[0]["html_url"],
 					newWindow: true,
 					close: true,
 					gravity: "bottom", // `top` or `bottom`
