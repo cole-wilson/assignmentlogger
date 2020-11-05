@@ -41,11 +41,11 @@ function check() {
 		$("body, #assignment-list, #v").css("display","block");
 		if (vnot) {
 			localStorage.setItem('version',version);
-			$.get("https://api.github.com/repos/cole-wilson/assignmentlogger/pulls?state=all",function(data,status){
+			$.get("https://api.github.com/repos/cole-wilson/assignmentlogger/commits",function(data,status){
 				Toastify({
 					text: "Version " + version + " just came out! (view details)",
 					duration: 6000, 
-					destination: data[0]["html_url"],
+					destination: data["html_url"],
 					newWindow: true,
 					close: true,
 					gravity: "bottom", // `top` or `bottom`
