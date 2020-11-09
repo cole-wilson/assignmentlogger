@@ -158,7 +158,7 @@ footer p {
 #useractions a {
 	color: white;
 }
-footer, #useractions a {
+#useractions a {
 	font-size: 1.2em;
 }
 #useravatar {
@@ -177,6 +177,9 @@ footer, #useractions a {
 	width: calc(100% - 40px);
 	min-height: 50px;
 	height: auto;
+}
+.newa {
+	cursor: pointer;
 }
 .link {
 	overflow-x: scroll;

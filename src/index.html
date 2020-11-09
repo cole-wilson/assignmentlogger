@@ -77,6 +77,16 @@
 				</div>
 			</div>
 			</div>
+			<!-- Showing:
+			<select>
+				<option disabled selected>All Classes</option>
+				<option>{{p1}}</option>
+				<option>{{p2}}</option>
+				<option>{{p3}}</option>
+				<option>{{p4}}</option>
+				<option>{{p5}}</option>
+				<option>{{p6}}</option>
+			</select><br> -->
 			<div v-if="typeof(assignments)!==undefined" :data-checked="assignment.checked" v-for="assignment in assignments" v-bind:class="['assignment-block', assignment.d, assignment.close]" :id="assignment.id">
 				<div class="wrap"><input v-model="assignment.checked" type="checkbox"></div>
 				<div class="assignment-clickbox">
@@ -87,7 +97,7 @@
 			<footer>
 				<br><hr>
 				<p>© {{currentyear}} <a href="https://colewilson.xyz">Cole Wilson</a><br>
-				<a href="https://github.com/cole-wilson/assignmentlogger" target="_blank">view source code on GitHub</a>
+				<a href="https://github.com/cole-wilson/assignmentlogger#readme" target="_blank">view source code on GitHub</a>
 				<br>AssignmentLogger Logo by Micah B.
 				</p>
 			</footer>
