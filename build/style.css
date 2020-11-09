@@ -76,6 +76,7 @@ header {
 	width: 50vw;
 	height: calc(100vh - 50px);
 	overflow-y: scroll;
+	overflow-x: hidden;
 /* 	border-top: 1px solid grey; */
 	float: left;
 }
@@ -171,6 +172,8 @@ footer p {
 
 /* ASSIGNMENT LIST */
 .assignment-block, #newassignment {
+	/* white-space: nowrap; */
+	/* text-overflow: ellipsis; */
 	margin: 20px;
 	background: var(--second-color);
 	border-radius: 10px;
@@ -178,6 +181,7 @@ footer p {
 	min-height: 50px;
 	height: auto;
 }
+
 .newa {
 	cursor: pointer;
 }
@@ -191,6 +195,13 @@ footer p {
 	border-radius: 10px;
 	width: calc(100% - 40px);
 	height: auto;
+}
+.atitle {
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	width: 90%;
+	display: block;
+	overflow: hidden
 }
 .links {
 	/* width: 90%; */
@@ -313,7 +324,7 @@ footer p {
 
 .newa:hover, .bn {
 	height: 250px;
-	transition: height 2s;
+	transition: all 2s;
 }
 #closebig {
 	display: none;
