@@ -29,9 +29,9 @@ var assignments = {};
 
 dones = localStorage.getItem("dones");
 $.get('https://api.assignmentlogger.com/users?mode=doneslist&id='+userdata.id,function(data,status){
-	if (data != dones) {
-		localStorage.setItem("dones",data);
-	}
+	// if (data != dones) {
+	// 	localStorage.setItem("dones",data);
+	// }
 	dones = localStorage.getItem("dones");
 });
 
@@ -169,7 +169,7 @@ $(document).on("click",".assignment-block input[type=checkbox]",function(){
 		dones = localStorage.getItem('dones');
 		$(this).parent().parent().addClass('done');
 	}
-	$.get("https://api.assignmentlogger.com/users?mode=donesnew&id="+userdata.id+"&dones="+localStorage.getItem('dones'))
+	// $.get("https://api.assignmentlogger.com/users?mode=donesnew&id="+userdata.id+"&dones="+localStorage.getItem('dones'))
 });
 
 $(document).on("click",".newa input, .newa i",function(){
