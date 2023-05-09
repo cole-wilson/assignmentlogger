@@ -3,6 +3,7 @@ vnot = version != localStorage.getItem('version');
 if (vnot) {
 	$("#loadtext").text("UPDATING TO version "+version+"!");
 }
+window.ga = console.log;
 // window.onerror = function(msg, url, linenumber) {
 //   alert('Error message: '+msg+'\nURL: '+url+'\nLine Number: '+linenumber);
 //   return true;
@@ -45,7 +46,7 @@ function check() {
 
 				Toastify({
 					text: "Version " + version + " just came out! (view details)",
-					duration: 6000, 
+					duration: 6000,
 					destination: data[0]["html_url"],
 					newWindow: true,
 					close: true,

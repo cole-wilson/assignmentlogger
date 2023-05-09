@@ -32,7 +32,7 @@ var v = new Vue({
 	}
 });
 
-$.get("https://api.assignmentlogger.com/schools?mode=list",function(data,status){
+$.get("https://aback.cwi.repl.co/schools?mode=list",function(data,status){
 	for (var key in data) {
 		v.schools.push({key:key,name:data[key]});
 	}
@@ -42,7 +42,7 @@ setTimeout(function(){
 	var user = JSON.parse(localStorage.getItem("user"));
 	if (typeof user.school !== undefined) {
 	$("#schoolselect").val(user.school);
-	$.get("https://api.assignmentlogger.com/schools?mode=classes&school="+$("#schoolselect").val(),function(data,status){
+	$.get("https://aback.cwi.repl.co/schools?mode=classes&school="+$("#schoolselect").val(),function(data,status){
 		v.classes = data;
 		setTimeout(function(){
 			$("#p1").val(user.p1);
@@ -63,7 +63,7 @@ setTimeout(function(){
 }, 700);
 
 $("#schoolselect").change(function(){
-	$.get("https://api.assignmentlogger.com/schools?mode=classes&school="+$(this).val(),function(data,status){
+	$.get("https://aback.cwi.repl.co/schools?mode=classes&school="+$(this).val(),function(data,status){
 		v.classes = data;
 	});
 });
@@ -88,9 +88,9 @@ $("#submit").click(function(){
 	user.p5 = $("#p5").val();
 	user.p6 = $("#p6").val();
 	user.schoology = $("#schoology").val().replace('webcal://','https://');
-	
+
 	localStorage.setItem('user',JSON.stringify(user));
-	$.get("https://api.assignmentlogger.com/users?mode=new&id="+user.id+"&school="+$("#schoolselect").val()+"&schoology="+encodeURIComponent($("#schoology").val().replace('webcal://','https://'))+"&p1="+encodeURI($("#p1").val())+"&p2="+encodeURI($("#p2").val())+"&p3="+encodeURI($("#p3").val())+"&p4="+encodeURI($("#p4").val())+"&p5="+encodeURI($("#p5").val())+"&p6="+encodeURI($("#p6").val()),function(data,status){
+	$.get("https://aback.cwi.repl.co/users?mode=new&id="+user.id+"&school="+$("#schoolselect").val()+"&schoology="+encodeURIComponent($("#schoology").val().replace('webcal://','https://'))+"&p1="+encodeURI($("#p1").val())+"&p2="+encodeURI($("#p2").val())+"&p3="+encodeURI($("#p3").val())+"&p4="+encodeURI($("#p4").val())+"&p5="+encodeURI($("#p5").val())+"&p6="+encodeURI($("#p6").val()),function(data,status){
 		window.location = "/";
 	})
 });

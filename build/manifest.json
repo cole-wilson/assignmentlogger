@@ -1,6 +1,6 @@
 {
-	"name": "AssignmentLogger [dev]",
-	"short_name": "AssignmentLogger [dev]",
+	"name": "AssignmentLogger",
+	"short_name": "AssignmentLogger",
 	"icons": [
 		{
 			"src": "/icons/android-chrome-192x192.png",

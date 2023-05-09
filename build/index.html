@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, user-scalable=no">
-    <title>AssignmentLogger [dev]</title>
+    <title>AssignmentLogger</title>
     <link href="style.css" rel="stylesheet" type="text/css" />
 		<link rel="apple-touch-icon" sizes="180x180" href="/icons/apple-touch-icon.png">
 		<link rel="icon" type="image/png" sizes="32x32" href="/icons/favicon-32x32.png">
@@ -14,26 +14,38 @@
 		<meta name="theme-color" content="#2F3BA2" />
 		<meta name="apple-mobile-web-app-capable" content="yes">
 		<meta name="apple-mobile-web-app-status-bar-style" content="black">
-		<meta name="apple-mobile-web-app-title" content="AssignmentLogger [dev]">
-		<meta name="google-signin-client_id" content="852583754661-p6qphdp6qijri8tk5fafm3e5auq4gn02.apps.googleusercontent.com">
+		<meta name="apple-mobile-web-app-title" content="AssignmentLogger">
+		<meta name="google-signin-client_id" content="852583754661-r2p8ne12s4chdcus8g3fpqhrn0dh3frl.apps.googleusercontent.com">
 		<!--[if IE]><script>document.write('IE is not supported. Get a new browser!!');</script><![endif]-->
   </head>
   <body>
-		<!-- <div id="newlink-modal"><div id="modalcontent">
-			hello
-		</div></div> -->
-		<div class="g-signin2" data-longtitle="true" data-onsuccess="go"></div>
 		<div id="load"><div class="loader">Loading...</div><br><span id="loadtext">Loading...</span></div>
 		<div id="v">
 		<div id="box">
 			<h1>Sign In / Sign Up</h1>
 			<p>Please use your student email address.</p>
+			<div id="g_id_onload"
+				 data-client_id="852583754661-r2p8ne12s4chdcus8g3fpqhrn0dh3frl.apps.googleusercontent.com"
+				 data-context="use"
+				 data-ux_mode="popup"
+				 data-callback="go"
+				 data-auto_prompt="false">
+			</div>
+
+			<div class="g_id_signin"
+				 data-type="standard"
+				 data-shape="rectangular"
+				 data-theme="outline"
+				 data-text="signin_with"
+				 data-size="medium"
+				 data-logo_alignment="center">
+			</div>
 		</div>
 		<div id="app">
 			<div id="a2hsp"><button id="a2hs">Install as an app</button></div>
 		<header>
 			<a :href="schoolink"><img id="schoologo" :alt="schoolname" :src="schoologo"></a>
-			<div id="headspace"><span onclick="window.location = '/';" id="htitle">AssignmentLogger [dev]</span></div>
+			<div id="headspace"><span onclick="window.location = '/';" id="htitle">AssignmentLogger</span></div>
 			<div id="user">
 				<span id="username">{{username}}</span>
 				<div id="useractions">
@@ -61,7 +73,7 @@
 					<label>Due:</label><input type="date">
 					<textarea placeholder="Description..."></textarea>
 					<button id="newcancel">Cancel</button>
-					<button id="newsubmit">Submit</button>			
+					<button id="newsubmit">Submit</button>
 				</div>
 			</div>
 			<div class="link">
@@ -121,9 +133,9 @@
 		  });
 		}
 		</script>
-		<script async src="https://www.googletagmanager.com/gtag/js?id=UA-179067232-3"></script>
-		<script>  
-		window.dataLayer = window.dataLayer || [];   function gtag(){dataLayer.push(arguments);}   gtag('js', new Date());    gtag('config', "UA-179067232-3"); 
+		<script async src="https://www.googletagmanager.com/gtag/js?id="></script>
+		<script>
+		window.dataLayer = window.dataLayer || [];   function gtag(){dataLayer.push(arguments);}   gtag('js', new Date());    gtag('config', "");
 		</script>
 		<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
 		<script async src="https://w.appzi.io/w.js?token=AZET6"></script>
@@ -131,8 +143,8 @@
 		<script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 		<script src="load.js"></script>
-		<script src="https://apis.google.com/js/platform.js"></script>
-		<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+		<script src="https://accounts.google.com/gsi/client"></script>
+		<script src="https://cdn.jsdelivr.net/npm/vue@2.7.14/dist/vue.js"></script>
     <script src="script.js"></script>
 		<script src="https://kit.fontawesome.com/1d50f37b8d.js" crossorigin="anonymous"></script>
   </body>
